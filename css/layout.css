@@ -7,13 +7,21 @@ main {
   --columns: 16;
 }
 
+.book-icon {
+  text-align: center;
+}
+
 section,
+#inside article,
+#inside aside,
 #devs li {
   --width: 16;
+  --gap-constant: 0.3%;
   --initialbasis: calc(var(--width, 0) / var(--columns, 16) * 100%);
-  --gap: calc((var(--columns, 16) - var(--width, 0)) * var(--gap-constant));
+  --gap: calc(
+    (var(--columns, 16) - var(--width, 0)) * var(--gap-constant, 0.3%)
+  );
   flex-basis: calc(var(--initialbasis) - var(--gap));
-  --gap-constant:0.3%
 }
 
 #devs ul {
@@ -25,7 +33,7 @@ section,
 
 #devs li {
   --width: 1;
-  --gap-constant:3%
+  --gap-constant: 3%;
 }
 
 @media (min-width: 740px) {
@@ -44,14 +52,26 @@ section,
     --width: 11;
     order: 3;
   }
-
   #resources {
     --width: 11;
     order: 4;
   }
-
   #devs ul {
     --columns: 5;
+  }
+  .floatleft {
+    float: left;
+    margin: 0 1rem 1rem 0;
+  }
+  .floatright {
+    float: right;
+    margin: 0 0 1rem 1rem;
+  }
+  #inside article {
+    --width: 7;
+  }
+  #inside aside {
+    --width: 4;
   }
 }
 @media (min-width: 950px) {
@@ -75,9 +95,19 @@ section,
     --width: 3;
     order: 3;
   }
+
+  #inside article {
+    --width: 10;
+  }
+  #inside aside {
+    --width: 4;
+  }
 }
 @media (min-width: 1200px) {
-  #main {
+  #devs ul {
+    --columns: 1;
+  }
+  main {
     --columns: 16;
   }
   #devs {
@@ -85,9 +115,14 @@ section,
     order: 3;
   }
   #resources {
+    --width: 3;
     order: 4;
   }
-  #devs ul {
-    --columns: 1;
+
+  #inside article {
+    --width: 12;
+  }
+  #inside aside {
+    --width: 4;
   }
 }
